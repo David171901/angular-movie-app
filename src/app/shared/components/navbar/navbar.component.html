@@ -1,0 +1,44 @@
+<nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 bg-black">
+  <div class="container px-4 mx-auto flex flex-wrap items-center justify-between lg:gap-16">
+    <div class="w-full relative flex items-center justify-between lg:w-auto lg:static lg:block lg:justify-start">
+      <img src="/assets/images/logo.png" class="h-4 lg:h-7" alt="Logo" />
+      <button
+        class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+        type="button" (click)="toggleNavbar()">
+        <i class="text-white fas fa-bars"></i>
+      </button>
+    </div>
+    <div class="lg:flex flex-grow items-center lg:bg-transparent lg:shadow-none"
+      [ngClass]="{'hidden': !showMobileMenu, 'block': showMobileMenu}">
+      <ul class="flex flex-col lg:flex-row list-none mr-auto">
+        <li class="flex items-center">
+          <a
+            class="text-white hover:text-gray-300 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold cursor-pointer w-full">
+            Home
+          </a>
+        </li>
+        <li class="flex items-center">
+          <a
+            class="text-white hover:text-gray-300 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold cursor-pointer w-full">
+            Films
+          </a>
+        </li>
+        <li class="flex items-center">
+          <a
+            class="text-white hover:text-gray-300 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold cursor-pointer w-full">
+            Series
+          </a>
+        </li>
+      </ul>
+      <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
+        <li class="flex items-center">
+          <button
+            class="bg-white active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
+            type="button" style="transition: all 0.15s ease 0s;">
+            <i class="fa-solid fa-user"></i> Profile
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
