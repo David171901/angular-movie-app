@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { Movie, MovieResponse } from 'src/app/core/models/movies.model';
+import { Movie, MoviesResponse } from 'src/app/core/models/movies.model';
 import { MovieService } from 'src/app/shared/services/movie.service';
 import { MoviesService } from '../../services/movies.service';
+import { Genre, GenresResponse } from 'src/app/core/models/genres.model';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-movies-page',
@@ -11,7 +13,7 @@ import { MoviesService } from '../../services/movies.service';
 export class MoviesPageComponent {
   movies: Movie[] = [];
   filteredMovies: Movie[] = [];
-  genres: number[] = [];
+  genres: Genre[] = [];
   selectedGenres: number[] = [];
   searchTerm: string = '';
 
@@ -19,21 +21,22 @@ export class MoviesPageComponent {
   isLoading: boolean = true;
 
   ngOnInit(): void {
-    this._moviesService.getMovies().subscribe((data: MovieResponse) => {
-      this.movies = data.results;
-      this.filteredMovies = data.results;
-      this.extractGenres();
-      this.isLoading = false;
-    });
-  }
+    const movies$ = this._moviesService.getMovies();
+    const genres$ = this._moviesService.getGenres();
 
-  extractGenres() {
-    this.movies.forEach(movie => {
-      movie.genre_ids!.forEach((genre: number) => {
-        if (!this.genres.includes(genre)) {
-          this.genres.push(genre);
-        }
-      });
+    forkJoin({ movies: movies$, genres: genres$ }).subscribe({
+      next: (data: { movies: MoviesResponse, genres: GenresResponse }) => {
+        this.movies = data.movies.results;
+        this.filteredMovies = data.movies.results;
+        this.genres = data.genres.genres;
+        this.isLoading = false;
+      },
+      error: (error) => {
+      
+      },
+      complete: () => {
+        this.isLoading = false; 
+      }
     });
   }
 

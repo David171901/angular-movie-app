@@ -1,0 +1,12 @@
+<div class="flex gap-3 flex-wrap justify-center my-4">
+  <div *ngFor="let item of items">
+    <input [id]="'checkbox_' + item.id" type="checkbox" class="hidden peer" [value]="item.id"
+      (change)="onItemChange(item.id, $event)">
+    <label [for]="'checkbox_' + item.id"
+      class="inline-flex items-center justify-between w-auto p-2 px-4 font-medium tracking-tight rounded-lg cursor-pointer bg-brand-light text-brand-black text-white bg-gray-800 peer-checked:bg-gray-500 peer-checked:text-white peer-checked:font-semibold peer-checked:underline peer-checked:decoration-brand-dark decoration-2">
+      <div class="flex items-center justify-center w-full">
+        <div class="text-sm text-brand-black">{{ item.name }}</div>
+      </div>
+    </label>
+  </div>
+</div>

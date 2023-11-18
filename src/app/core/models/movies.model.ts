@@ -16,6 +16,6 @@ export interface Movie {
   vote_count: number;
 }
 
-export interface MovieResponse {
+export interface MoviesResponse {
   results: Movie[];
 }
