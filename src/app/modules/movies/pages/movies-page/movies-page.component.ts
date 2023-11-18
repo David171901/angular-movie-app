@@ -7,8 +7,7 @@ import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-movies-page',
-  templateUrl: './movies-page.component.html',
-  styleUrls: ['./movies-page.component.css']
+  templateUrl: './movies-page.component.html'
 })
 export class MoviesPageComponent {
   movies: Movie[] = [];

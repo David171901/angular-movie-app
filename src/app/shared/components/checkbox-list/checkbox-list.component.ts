@@ -7,8 +7,7 @@ export interface CustomItem {
 
 @Component({
   selector: 'app-checkbox-list',
-  templateUrl: './checkbox-list.component.html',
-  styleUrls: ['./checkbox-list.component.css']
+  templateUrl: './checkbox-list.component.html'
 })
 export class CheckboxListComponent<T extends CustomItem> {
   @Input() items: T[] = [];

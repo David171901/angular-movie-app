@@ -2,8 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-not-found-message',
-  templateUrl: './not-found-message.component.html',
-  styleUrls: ['./not-found-message.component.css']
+  templateUrl: './not-found-message.component.html'
 })
 export class NotFoundMessageComponent {
   @Input() title: string = 'Item not found';

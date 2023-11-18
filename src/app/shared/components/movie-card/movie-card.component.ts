@@ -3,8 +3,7 @@ import { Movie } from 'src/app/core/models/movies.model';
 
 @Component({
   selector: 'app-movie-card',
-  templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.css']
+  templateUrl: './movie-card.component.html'
 })
 export class MovieCardComponent {
   @Input() data!: Movie;
