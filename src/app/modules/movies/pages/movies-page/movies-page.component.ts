@@ -16,9 +16,9 @@ export class MoviesPageComponent {
   genres: Genre[] = [];
   selectedGenres: number[] = [];
   searchTerm: string = '';
+  isLoading: boolean = true;
 
   constructor(private _moviesService: MoviesService) { }
-  isLoading: boolean = true;
 
   ngOnInit(): void {
     const movies$ = this._moviesService.getMovies();

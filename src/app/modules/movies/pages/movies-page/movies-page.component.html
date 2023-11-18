@@ -1,5 +1,6 @@
-<div class="bg-black min-h-screen">
-  <main class="container mx-auto">
+<main class="container mx-auto">
+  <app-loader *ngIf="!!isLoading"></app-loader>
+  <section *ngIf="!isLoading">
     <div class="flex items-center justify-center">
       <div class="relative w-11/12 md:w-1/2 mt-12">
         <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar por título" (input)="filterMovies()"
@@ -10,17 +11,23 @@
       </div>
     </div>
     <div>
-      <h4>Filtrar por género:</h4>
       <div class="flex gap-x-4">
         <app-checkbox-list [items]="genres"
           (itemChange)="onGenreChange($event.itemId, $event.event)"></app-checkbox-list>
       </div>
     </div>
     <ng-container *ngIf="filteredMovies.length === 0; else moviesList">
-      <app-not-found-message [title]="'Movies not found'" [message]="'Your search \'' + searchTerm + '\' does not match any movie. Try again.'" [searchTerm]="searchTerm"></app-not-found-message>
+      <app-not-found-message *ngIf="!!searchTerm"
+        [title]="'Movies not found'"
+        [message]="'Your search \'' + searchTerm + '\' does not match any movie. Try again.'"
+        [searchTerm]="searchTerm"
+        ></app-not-found-message>
+      <app-not-found-message *ngIf="!searchTerm"
+        [title]="'Movies not found'"
+        ></app-not-found-message>
     </ng-container>
-  </main>
-</div>
+  </section>
+</main>
 
 <ng-template #moviesList>
   <div
