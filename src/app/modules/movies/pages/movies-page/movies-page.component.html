@@ -1,1 +1,40 @@
-<p>movies-page works!</p>
+<div class="bg-black min-h-screen">
+  <main class="container mx-auto">
+    <div class="flex items-center justify-center">
+      <div class="relative w-11/12 md:w-1/2 mt-12">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar por título" (input)="filterMovies()"
+          class="bg-transparent border-none focus:outline-none focus:border-none focus:ring-0 placeholder-gray-400 text-white py-2 pl-8 pr-4 rounded-full w-full bg-zinc-900 focus:bg-zinc-900 transition-all duration-300 ease-in-out focus:shadow-outline">
+        <div class="absolute top-2 left-3 h-6 w-6 text-gray-400">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h4>Filtrar por género:</h4>
+      <div *ngFor="let genre of genres">
+        <label class="text-white">
+          <input type="checkbox" [value]="genre" (change)="onGenreChange(genre, $event)"> {{ genre }}
+        </label>
+      </div>
+    </div>
+    <ng-container *ngIf="filteredMovies.length === 0; else moviesList">
+      <div class="flex flex-col w-full max-w-sm px-4 mx-auto">
+        <div class="w-14 h-14 mx-auto text-white rounded-full bg-[#D71921] flex justify-center items-center">
+          <i class="fa-solid fa-magnifying-glass text-2xl"></i>
+        </div>
+        <h1 class="mt-3 text-lg text-white text-center">Movies not found</h1>
+        <p class="mt-2 text-white text-center">Your search "{{searchTerm}}" does not match any movie. Try again.</p>
+      </div>
+    </ng-container>
+  </main>
+</div>
+
+<ng-template #moviesList>
+  <div>
+    <h2>Trending Movies</h2>
+    <div
+      class="mx-auto w-11/12 md:w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+      <app-movie-card *ngFor="let movie of filteredMovies" [data]="movie"></app-movie-card>
+    </div>
+  </div>
+</ng-template>

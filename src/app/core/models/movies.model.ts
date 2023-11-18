@@ -8,7 +8,7 @@ export interface Movie {
   overview: string;
   poster_path: string;
   media_type: string;
-  genre_ids?: (number)[] | null;
+  genre_ids?: (number)[];
   popularity: number;
   release_date: string;
   video: boolean;
