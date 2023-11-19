@@ -6,18 +6,23 @@ import { ProfilePageComponent } from '../profile/pages/profile-page/profile-page
 
 const routes: Routes = [
   {
-    path: 'movies',
-    component: MoviesPageComponent,
-    loadChildren: () => import(`../movies/movies.module`).then(m => m.MoviesModule),
-  },
-  {
-    path: 'profile',
-    component: ProfilePageComponent,
-    loadChildren: () => import(`../profile/profile.module`).then(m => m.ProfileModule),
-  },
-  {
-    path: '**',
-    redirectTo: '/movies'
+    path: '',
+    component: HomePageComponent,
+    children: [
+      {
+        path: 'movies',
+        loadChildren: () => import(`../movies/movies.module`).then(m => m.MoviesModule),
+      },
+      {
+        path: 'profile',
+        component: ProfilePageComponent,
+        loadChildren: () => import(`../profile/profile.module`).then(m => m.ProfileModule),
+      },
+      {
+        path: '**',
+        redirectTo: '/movies'
+      }
+    ]
   }
 ];
 

@@ -39,7 +39,7 @@ export class AuthPageComponent implements OnInit {
       this._authService.login(username,password)
         .subscribe(
           res => {
-            this.router.navigate(['/', 'movies'])
+            this.router.navigate(['/', 'profile'])
             return 
           },
           err => {

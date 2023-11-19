@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Profile } from '../../models';
 import { ProfileService } from '../../services/profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-page',
@@ -30,9 +31,10 @@ export class ProfilePageComponent {
     }
   ];
 
-  constructor(private _profileService: ProfileService) {}
+  constructor(private _profileService: ProfileService, private router: Router) {}
 
   selectProfile(profile: Profile) {
     this._profileService.setSelectedProfile(profile);
+    this.router.navigate(['/', 'movies'])
   }
 }

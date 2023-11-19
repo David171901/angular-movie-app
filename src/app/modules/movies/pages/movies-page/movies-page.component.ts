@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Movie, MoviesResponse } from 'src/app/core/models/movies.model';
-import { MovieService } from 'src/app/shared/services/movie.service';
 import { MoviesService } from '../../services/movies.service';
 import { Genre, GenresResponse } from 'src/app/core/models/genres.model';
 import { forkJoin } from 'rxjs';
