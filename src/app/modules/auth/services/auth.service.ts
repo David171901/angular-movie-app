@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   logout() {
-    // this._cookie.delete('accesstoken');
+    this._cookie.delete('accesstoken');
     this.router.navigate(['/','auth']);
   }
 }

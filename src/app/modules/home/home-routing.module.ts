@@ -23,7 +23,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: '/profile'
+        redirectTo: '/movies'
       }
     ]
   }
