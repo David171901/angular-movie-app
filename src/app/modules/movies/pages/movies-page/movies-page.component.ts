@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Movie, MoviesResponse } from 'src/app/core/models/movies.model';
-import { MoviesService } from '../../services/movies.service';
-import { Genre, GenresResponse } from 'src/app/core/models/genres.model';
+import { Genre, GenresResponse } from '@core/models/genres.model';
+import { Movie, MoviesResponse } from '@core/models/movies.model';
+import { MoviesService } from '@modules/movies/services/movies.service';
 import { forkJoin } from 'rxjs';
 
 @Component({
