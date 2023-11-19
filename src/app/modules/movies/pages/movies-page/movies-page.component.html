@@ -1,0 +1,43 @@
+<main class="container mx-auto">
+  <!-- LOADER -->
+  <app-loader *ngIf="!!isLoading"></app-loader>
+  <!-- ERROR -->
+  <app-error *ngIf="!!hasError"></app-error>
+  <!-- CONTENT -->
+  <section *ngIf="!isLoading">
+    <div class="flex flex-col items-center justify-center">
+      <div class="relative w-11/12 md:w-1/2 mt-8">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search by title" (input)="filterMovies()"
+          class="bg-transparent border-none focus:outline-none focus:border-none focus:ring-0 placeholder-gray-400 text-white py-2 pl-8 pr-4 rounded-full w-full bg-zinc-900 focus:bg-zinc-900 transition-all duration-300 ease-in-out focus:shadow-outline">
+        <div class="absolute top-2 left-3 h-6 w-6 text-gray-400">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+      </div>
+      <div class="relative w-11/12 md:w-1/2 mt-4">
+        <textarea type="text" [(ngModel)]="searchTermByDescription" placeholder="Search by description"
+          (input)="filterMovies()"
+          class="bg-transparent border-none focus:outline-none focus:border-none focus:ring-0 placeholder-gray-400 text-white py-2 pl-4 pr-4 rounded-md w-full bg-zinc-900 focus:bg-zinc-900 transition-all duration-300 ease-in-out focus:shadow-outline"></textarea>
+      </div>
+    </div>
+    <div>
+      <div class="flex gap-x-4">
+        <app-checkbox-list [items]="genres"
+          (itemChange)="onGenreChange($event.itemId, $event.event)"></app-checkbox-list>
+      </div>
+    </div>
+    <ng-container *ngIf="filteredMovies.length === 0; else moviesList">
+      <app-not-found-message *ngIf="!!searchTerm" [title]="'Movies not found'"
+        [message]="'Your search \'' + searchTerm + '\' does not match any movie. Try again.'"
+        [searchTerm]="searchTerm"></app-not-found-message>
+      <app-not-found-message *ngIf="!searchTerm" [title]="'Movies not found'"></app-not-found-message>
+    </ng-container>
+  </section>
+</main>
+
+<ng-template #moviesList>
+  <div
+    class="mx-auto w-11/12 md:w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+    <app-card *ngFor="let movie of filteredMovies" [id]="movie.id" [img]="movie.poster_path" [title]="movie.title"
+      [score]="movie.vote_average" path="/movies"></app-card>
+  </div>
+</ng-template>

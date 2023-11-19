@@ -1,0 +1,11 @@
+<div class="absolute w-full top-0 bg-black h-screen flex flex-col items-center justify-center z-10">
+  <h1 class="text-gray-200 text-5xl">Who's watching?</h1>
+  <div class="flex flex-row flex-wrap gap-5 mt-8 justify-center items-center">
+    <a *ngFor="let profile of profiles" href="#" class="flex flex-col items-center group gap-2" (click)="selectProfile(profile)">
+      <img [src]="profile.imageUrl"
+        class="rounded border-2 border-transparent group-hover:border-2 group-hover:border-gray-300 transition-all duration-300"
+        width="150px" height="150px" />
+      <p class="text-gray-500 group-hover:text-gray-300">{{ profile.name }}</p>
+    </a>
+  </div>
+</div>

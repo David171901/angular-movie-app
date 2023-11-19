@@ -1,0 +1,21 @@
+<main>
+  <!-- LOADER -->
+  <app-loader *ngIf="!!isLoading"></app-loader>
+  <!-- ERROR -->
+  <app-error *ngIf="!!hasError"></app-error>
+  <!-- CONTENT -->
+  <section *ngIf="!isLoading">
+    <div class="h-[300px] left-0 right-0 top-0 relative">
+      <div class="overlay-film-cover"></div>
+      <img [src]="'https://image.tmdb.org/t/p/original' + movieDetail.backdrop_path" class="rounded-0 rounded-none">
+    </div>
+    <section class="-mt-[150px] flex items-center relative z-10 mobile:block container mx-auto">
+      <img [src]="'https://image.tmdb.org/t/p/original/' + movieDetail.poster_path"
+        class="w-[200px] min-w-[200px] h-[300px] mobile:mx-auto">
+      <div class="px-3 flex flex-col items-start gap-3">
+        <p class="text-4xl font-semibold line-clamp-1  text-white">{{movieDetail.name}}</p>
+        <p class="line-clamp-3 opacity-[0.9]  text-white">{{movieDetail.overview}}</p>
+      </div>
+    </section>
+  </section>
+</main>
