@@ -9,4 +9,5 @@ export class CardComponent {
   @Input() title!: string;
   @Input() score!: number;
   @Input() img!: string;
+  @Input() path!: string;
 }

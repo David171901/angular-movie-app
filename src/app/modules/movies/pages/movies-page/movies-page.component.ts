@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Genre, GenresResponse } from '@core/models/genres.model';
 import { Movie, MoviesResponse } from '@core/models/movies.model';
 import { MoviesService } from '@modules/movies/services/movies.service';
@@ -8,7 +8,7 @@ import { forkJoin } from 'rxjs';
   selector: 'app-movies-page',
   templateUrl: './movies-page.component.html'
 })
-export class MoviesPageComponent {
+export class MoviesPageComponent implements OnInit{
   movies: Movie[] = [];
   filteredMovies: Movie[] = [];
   genres: Genre[] = [];

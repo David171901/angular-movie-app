@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GenresResponse } from '@core/models/genres.model';
+import { SerieResponseDetail } from '@core/models/serieDetail.model';
 import { SeriesResponse } from '@core/models/series.model';
 import { Observable } from 'rxjs';
 
@@ -26,7 +27,7 @@ export class SeriesService {
     return this.http.get<GenresResponse>(`${this.apiUrl}/genresTV.json`);
   }
 
-  getMovieDetails(movieId: string): Observable<SeriesResponse> {
-    return this.http.get<SeriesResponse>(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, this.httpOptions);
+  getSerieDetails(serieId: string): Observable<SerieResponseDetail> {
+    return this.http.get<SerieResponseDetail>(`https://api.themoviedb.org/3/tv/${serieId}?language=en-US`, this.httpOptions);
   }
 }
