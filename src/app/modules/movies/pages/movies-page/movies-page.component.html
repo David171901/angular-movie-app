@@ -32,6 +32,6 @@
 <ng-template #moviesList>
   <div
     class="mx-auto w-11/12 md:w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-    <app-movie-card *ngFor="let movie of filteredMovies" [data]="movie"></app-movie-card>
+    <app-card *ngFor="let movie of filteredMovies" [id]="movie.id" [img]="movie.poster_path" [title]="movie.title" [score]="movie.vote_average"></app-card>
   </div>
 </ng-template>

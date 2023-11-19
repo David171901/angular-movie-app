@@ -31,10 +31,9 @@ export class ProfilePageComponent {
     }
   ];
 
-  constructor(private _profileService: ProfileService, private router: Router) {}
+  constructor(private _profileService: ProfileService) {}
 
   selectProfile(profile: Profile) {
     this._profileService.setSelectedProfile(profile);
-    this.router.navigate(['/', 'movies'])
   }
 }
