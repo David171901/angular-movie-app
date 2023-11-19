@@ -6,8 +6,7 @@ import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-series-page',
-  templateUrl: './series-page.component.html',
-  styleUrls: ['./series-page.component.css']
+  templateUrl: './series-page.component.html'
 })
 export class SeriesPageComponent {
   series: Serie[] = [];

@@ -4,6 +4,7 @@ import { GenresResponse } from '@core/models/genres.model';
 import { SerieResponseDetail } from '@core/models/serieDetail.model';
 import { SeriesResponse } from '@core/models/series.model';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class SeriesService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMGU1NGNlNDdjYTlkMWNiZGZkYmQyYjUxMWY4OGUwYyIsInN1YiI6IjY1NTVhZDI2YWE2NTllMDBhZGEzZWQ5ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0n-eDtEV_LE8WtY4u4Xa6CW0FzVUmiC4EqP0SIRLtE0'
+      'Authorization': `Bearer ${environment.accessTokenMoviedb}`
     })
   };
   
@@ -28,6 +29,6 @@ export class SeriesService {
   }
 
   getSerieDetails(serieId: string): Observable<SerieResponseDetail> {
-    return this.http.get<SerieResponseDetail>(`https://api.themoviedb.org/3/tv/${serieId}?language=en-US`, this.httpOptions);
+    return this.http.get<SerieResponseDetail>(`${environment.moviedbApiUrl}/tv/${serieId}?language=en-US`, this.httpOptions);
   }
 }

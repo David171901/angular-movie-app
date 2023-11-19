@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthService {
       username,
       password,
     }
-    return this._http.post(`https://dummyjson.com/auth/login`,body).pipe(
+    return this._http.post(`${environment.authApiUrl}/login`,body).pipe(
       tap((res: any) => {
         const { token } = res;
         this._cookie.set('accesstoken', token, 4, '/')

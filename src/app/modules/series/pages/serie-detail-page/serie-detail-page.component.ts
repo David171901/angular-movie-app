@@ -5,8 +5,7 @@ import { SeriesService } from '@modules/series/services/series.service';
 
 @Component({
   selector: 'app-serie-detail-page',
-  templateUrl: './serie-detail-page.component.html',
-  styleUrls: ['./serie-detail-page.component.css']
+  templateUrl: './serie-detail-page.component.html'
 })
 export class SerieDetailPageComponent implements OnInit {
   movieDetail!: SerieResponseDetail;
