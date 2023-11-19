@@ -15,6 +15,7 @@ export class SeriesPageComponent {
   genres: Genre[] = [];
   selectedGenres: number[] = [];
   searchTerm: string = '';
+  searchTermByDescription: string = '';
   isLoading: boolean = true;
   hasError: boolean = false;
 
@@ -43,8 +44,9 @@ export class SeriesPageComponent {
   filterSeries() {
     this.filteredSeries = this.series.filter(serie => {
       const matchTitle = serie.name.toLowerCase().includes(this.searchTerm.toLowerCase());
+      const matchDescription = serie.overview.toLowerCase().includes(this.searchTermByDescription.toLowerCase());
       const matchGenre = this.selectedGenres.length === 0 || this.selectedGenres.some(g => serie.genre_ids!.includes(g));
-      return matchTitle && matchGenre;
+      return matchTitle && matchGenre && matchDescription;
     });
   }
 

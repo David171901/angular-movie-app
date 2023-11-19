@@ -11,15 +11,15 @@
     <div class="lg:flex flex-grow items-center lg:bg-transparent lg:shadow-none"
       [ngClass]="{'hidden': !showMobileMenu, 'block': showMobileMenu}">
       <ul class="flex flex-col lg:flex-row list-none mr-auto">
-        <li class="flex items-center">
+        <li class="flex items-center" >
           <span
-            class="text-white hover:text-gray-300 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold cursor-pointer w-full" [routerLink]="['/movies']">
+            class="text-white hover:text-gray-300 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold cursor-pointer w-full" [routerLink]="['/movies']" routerLinkActive="bg-red-600">
             Movies
           </span>
         </li>
         <li class="flex items-center">
           <span
-            class="text-white hover:text-gray-300 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold cursor-pointer w-full" [routerLink]="['/series']">
+            class="text-white hover:text-gray-300 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold cursor-pointer w-full" [routerLink]="['/series']" routerLinkActive="bg-red-600">
             TV Series
           </span>
         </li>

@@ -14,6 +14,7 @@ export class MoviesPageComponent implements OnInit{
   genres: Genre[] = [];
   selectedGenres: number[] = [];
   searchTerm: string = '';
+  searchTermByDescription: string = '';
   isLoading: boolean = true;
   hasError: boolean = false;
 
@@ -42,8 +43,9 @@ export class MoviesPageComponent implements OnInit{
   filterMovies() {
     this.filteredMovies = this.movies.filter(movie => {
       const matchTitle = movie.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+      const matchDescription = movie.overview.toLowerCase().includes(this.searchTermByDescription.toLowerCase());
       const matchGenre = this.selectedGenres.length === 0 || this.selectedGenres.some(g => movie.genre_ids!.includes(g));
-      return matchTitle && matchGenre;
+      return matchTitle && matchGenre && matchDescription;
     });
   }
 
