@@ -1,0 +1,41 @@
+<main class="container mx-auto">
+  <!-- LOADER -->
+  <app-loader *ngIf="!!isLoading"></app-loader>
+  <!-- ERROR -->
+  <app-error *ngIf="!!hasError"></app-error>
+  <!-- CONTENT -->
+  <section *ngIf="!isLoading">
+    <div class="flex items-center justify-center">
+      <div class="relative w-11/12 md:w-1/2 mt-12">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar por título" (input)="filterSeries()"
+          class="bg-transparent border-none focus:outline-none focus:border-none focus:ring-0 placeholder-gray-400 text-white py-2 pl-8 pr-4 rounded-full w-full bg-zinc-900 focus:bg-zinc-900 transition-all duration-300 ease-in-out focus:shadow-outline">
+        <div class="absolute top-2 left-3 h-6 w-6 text-gray-400">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="flex gap-x-4">
+        <app-checkbox-list [items]="genres"
+          (itemChange)="onGenreChange($event.itemId, $event.event)"></app-checkbox-list>
+      </div>
+    </div>
+    <ng-container *ngIf="filteredSeries.length === 0; else seriesList">
+      <app-not-found-message *ngIf="!!searchTerm"
+        [title]="'Series not found'"
+        [message]="'Your search \'' + searchTerm + '\' does not match any serie. Try again.'"
+        [searchTerm]="searchTerm"
+        ></app-not-found-message>
+      <app-not-found-message *ngIf="!searchTerm"
+        [title]="'Series not found'"
+        ></app-not-found-message>
+    </ng-container>
+  </section>
+</main>
+
+<ng-template #seriesList>
+  <div
+    class="mx-auto w-11/12 md:w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+    <app-card *ngFor="let serie of filteredSeries" [id]="serie.id" [img]="serie.poster_path" [title]="serie.name" [score]="serie.vote_average"></app-card>
+  </div>
+</ng-template>

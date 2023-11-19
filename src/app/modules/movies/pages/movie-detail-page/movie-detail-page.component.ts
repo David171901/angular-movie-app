@@ -5,8 +5,7 @@ import { MoviesService } from '@modules/movies/services/movies.service';
 
 @Component({
   selector: 'app-movie-detail-page',
-  templateUrl: './movie-detail-page.component.html',
-  styleUrls: ['./movie-detail-page.component.css']
+  templateUrl: './movie-detail-page.component.html'
 })
 export class MovieDetailPageComponent {
   movieDetail!: MovieDetailResponse;
