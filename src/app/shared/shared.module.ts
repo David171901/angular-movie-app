@@ -7,6 +7,7 @@ import { CheckboxListComponent } from './components/checkbox-list/checkbox-list.
 import { NotFoundMessageComponent } from './components/not-found-message/not-found-message.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { CardComponent } from './components/card/card.component';
+import { ErrorComponent } from './components/error/error.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { CardComponent } from './components/card/card.component';
     NotFoundMessageComponent,
     LoaderComponent,
     CardComponent,
+    ErrorComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +31,7 @@ import { CardComponent } from './components/card/card.component';
     NotFoundMessageComponent,
     LoaderComponent,
     CardComponent,
+    ErrorComponent,
   ]
 })
 export class SharedModule { }

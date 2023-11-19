@@ -15,6 +15,7 @@ export class MoviesPageComponent {
   selectedGenres: number[] = [];
   searchTerm: string = '';
   isLoading: boolean = true;
+  hasError: boolean = false;
 
   constructor(private _moviesService: MoviesService) { }
 
@@ -27,10 +28,10 @@ export class MoviesPageComponent {
         this.movies = data.movies.results;
         this.filteredMovies = data.movies.results;
         this.genres = data.genres.genres;
-        this.isLoading = false;
       },
       error: (error) => {
-      
+        console.error(error)
+        this.hasError = true;
       },
       complete: () => {
         this.isLoading = false; 

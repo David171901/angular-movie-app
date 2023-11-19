@@ -1,5 +1,9 @@
 <main class="container mx-auto">
+  <!-- LOADER -->
   <app-loader *ngIf="!!isLoading"></app-loader>
+  <!-- ERROR -->
+  <app-error *ngIf="!!hasError"></app-error>
+  <!-- CONTENT -->
   <section *ngIf="!isLoading">
     <div class="flex items-center justify-center">
       <div class="relative w-11/12 md:w-1/2 mt-12">
