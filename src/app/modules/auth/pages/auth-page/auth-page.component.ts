@@ -35,18 +35,21 @@ export class AuthPageComponent implements OnInit {
 
   sendLogin(): void {
     if(this.formLogin.valid) {
-      const {username, password} = this.formLogin.value;
-      this._authService.login(username,password)
-        .subscribe(
-          res => {
-            this.router.navigate(['/', 'profile'])
-            return 
-          },
-          err => {
-            console.error("sendLogin ~ err:", err)
-            return 
-          }
-        )
-    }
+      this.router.navigate(['/', 'profile'])
+    };
+    // if(this.formLogin.valid) {
+    //   const {username, password} = this.formLogin.value;
+    //   this._authService.login(username,password)
+    //     .subscribe(
+    //       res => {
+    //         this.router.navigate(['/', 'profile'])
+    //         return 
+    //       },
+    //       err => {
+    //         console.error("sendLogin ~ err:", err)
+    //         return 
+    //       }
+    //     )
+    // }
   }
 }
